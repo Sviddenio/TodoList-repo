@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Todo</title>
+    </head>
+    <body>
+        <button onclick = "addTodo();">Add item</button>
+        <script>
+        let todos = ["get groceries", "wash car", "pick up kids from school"];
+        
+
+        todos.forEach(function(todo){
+            let element = document.createElement("div");
+            element.innerText = todo;
+            document.body.appendChild(element);
+        });
+
+        addTodo(){
+            todos.push('another todo');
+        }
+
+    
+        </script>
+    </body>
+</html>
