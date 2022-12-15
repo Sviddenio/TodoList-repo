@@ -3,31 +3,46 @@
         <title>Todo</title>
     </head>
     <body>
+        <input id="dueDate" type="date"\>
         <div id="todoList"></div>
-        <input id ="todoTitle" type ="text"/>
+        <input id ="task" type ="text"/>
         <button onclick = "addTodo();">Add item</button>
         <script>
-        let todos = ["get groceries", "wash car", "pick up kids from school"];
+            let todos = [{
+                task: "get groceries", 
+                dueDate: "2022-12-15"
+            },
+            {   task: "feed dog",
+                dueDate: "2022-12-17"
+            }];
+        
 
-        render();
+            render();
 
         function render(){
             //Clears todolist
             document.getElementById("todoList").innerHTML = " ";
 
             //Renders new list from array
-            todos.forEach(function(todoTitle){
-            let element = document.createElement("div");
-            element.innerText = todoTitle;
-            let todoList = document.getElementById("todoList");
+            todos.forEach(function(todo){
+            const element = document.createElement("div");
+            element.innerText = todo.task + " " + todo.dueDate;
+            const todoList = document.getElementById("todoList");
             todoList.appendChild(element);
             });
         }  
-
+        /** Adds a new object to the array of tasks
+         */
         function addTodo(){
-            let textbox = document.getElementById("todoTitle");
-            let todo = textbox.value;
-            todos.push(todo);
+            const textbox = document.getElementById("task");
+            const task = textbox.value;
+
+            const date = document.getElementById("dueDate");
+            const dueDate = date.value;
+            todos.push({
+                task: task,
+                dueDate: dueDate
+            });
             render();
         }
       
